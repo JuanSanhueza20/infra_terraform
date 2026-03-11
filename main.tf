@@ -297,6 +297,14 @@ resource "aws_instance" "ad_controller" {
     subnet_id          = aws_subnet.private_a.id
     key_name           = aws_key_pair.ad_controller_key.key_name
     vpc_security_group_ids = [aws_security_group.ad_controller_sg.id] 
+    user_data          = <<-EOF
+      <powershell>
+      Enable-PSRemoting -Force
+      Set-Item WSMan:\localhost\Client\TrustedHosts -Value "*" -Force
+      winrm quickconfig -q
+      </powershell>
+      <persist>true</persist>
+      EOF
     tags = {
         Name = "AD_CONTROLLER"
 } 
