@@ -257,19 +257,19 @@ resource "aws_security_group" "ad_controller_sg" {
 
 resource "aws_key_pair" "bastion_key" {
     key_name           = "bastion-key"
-    public_key         = file("claves/wg_key/wireguard-bastion.pub")
+    public_key         = file("../keys/wireguard_bastion/id_ed25519.pub")
 
 }
 
 
 resource "aws_key_pair" "private_server_key" {
     key_name           = "private_key"
-    public_key         = file("claves/private_server_key/server_privado.pub")
+    public_key         = file("../keys/private_server/id_ed25519.pub")
 }
 
 resource "aws_key_pair" "ad_controller_key"  {
    key_name            = "ad_controller_key"
-   public_key          = file("claves/ad_key/ad_controller.pub")
+   public_key          = file("../keys/ad_controller/id_rsa.pub")
 }
 
 
