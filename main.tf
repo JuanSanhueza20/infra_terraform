@@ -335,7 +335,7 @@ resource "aws_instance" "vpn_bastion" {
 
 ### inventory yaml ###
 resource "local_file" "ansible_inventory" {
-  filename = "inventory.yaml"
+  filename = "../inventory.yaml"
   content  = templatefile("inventory.yaml.tpl", {
   bastion_vpn = aws_instance.vpn_bastion.public_ip
   server_interno = aws_instance.private_server.private_ip
