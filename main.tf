@@ -229,7 +229,7 @@ resource "aws_security_group" "ad_controller_sg" {
    from_port   = 5986
    to_port     = 5986
    protocol    = "tcp"
-   cidr_blocks = ["192.168.10.0/24"]
+   cidr_blocks = ["10.10.10.0/24"]
 }
 
     ingress {
